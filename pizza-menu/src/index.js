@@ -67,16 +67,22 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our menu</h2>
-      <ul className="pizzas">
-        {pizzaData.map((pizza) => (
-          <Pizza pizzaObj={pizza} key={pizza.name} />
-        ))}
-      </ul>
+      {pizzaData.length > 0 ? (
+        <ul className="pizzas">
+          {pizzaData.map((pizza) => (
+            <Pizza pizzaObj={pizza} key={pizza.name} />
+          ))}
+        </ul>
+      ) : (
+        <h3 style={{ fontSize: "20px" }}>
+          We are working on our menu. Please visit us later.
+        </h3>
+      )}
     </main>
   );
 }
 function Pizza(Props) {
-  console.log(Props.pizzaObj.photoName);
+  if (Props.pizzaObj.soldOut) return null;
   return (
     <li className="pizza">
       <img src={Props.pizzaObj.photoName} alt={Props.pizzaObj.name}></img>
@@ -89,10 +95,21 @@ function Pizza(Props) {
   );
 }
 function Footer() {
+  const openingHour = 12;
+  const closingHour = 23;
+  const presentHour = new Date().getHours();
+  const isOpened = presentHour >= openingHour && presentHour <= closingHour;
   return (
     <footer className="footer">
-      {/* {new Date().toLocaleDateString().split("/")[2]} */}
-      <span> We ar open. Come to use or order online.</span>
+      {isOpened ? (
+        <span>
+          We ar open until{openingHour}:00. Come to us or order online.
+        </span>
+      ) : (
+        <span>
+          Please come to use between {openingHour}:00 and {closingHour}:00
+        </span>
+      )}
     </footer>
   );
 }
