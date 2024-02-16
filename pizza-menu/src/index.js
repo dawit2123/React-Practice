@@ -68,11 +68,17 @@ function Menu() {
     <main className="menu">
       <h2>Our menu</h2>
       {pizzaData.length > 0 ? (
-        <ul className="pizzas">
-          {pizzaData.map((pizza) => (
-            <Pizza pizzaObj={pizza} key={pizza.name} />
-          ))}
-        </ul>
+        <>
+          <p>
+            Authentic Italian cuising. 6 creative dishes to choose from. All
+            from our stone ove, all organic, all delicious.
+          </p>
+          <ul className="pizzas">
+            {pizzaData.map((pizza) => (
+              <Pizza pizzaObj={pizza} key={pizza.name} />
+            ))}
+          </ul>
+        </>
       ) : (
         <h3 style={{ fontSize: "20px" }}>
           We are working on our menu. Please visit us later.
@@ -81,15 +87,16 @@ function Menu() {
     </main>
   );
 }
-function Pizza(Props) {
-  if (Props.pizzaObj.soldOut) return null;
+function Pizza({ pizzaObj }) {
+  // if (pizzaObj.soldOut) return null;
+
   return (
-    <li className="pizza">
-      <img src={Props.pizzaObj.photoName} alt={Props.pizzaObj.name}></img>
+    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
+      <img src={pizzaObj.photoName} alt={pizzaObj.name}></img>
       <div>
-        <h3>{Props.pizzaObj.name}</h3>
-        <p>{Props.pizzaObj.ingredients}</p>
-        <span>{Props.pizzaObj.price}</span>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+        <span>{pizzaObj.soldOut ? "SOLD OUT" : pizzaObj.price}</span>
       </div>
     </li>
   );
@@ -102,9 +109,10 @@ function Footer() {
   return (
     <footer className="footer">
       {isOpened ? (
-        <span>
-          We ar open until{openingHour}:00. Come to us or order online.
-        </span>
+        <div className="order">
+          <p>We ar open until{openingHour}:00. Come to us or order online.</p>
+          <button className="btn">Order</button>
+        </div>
       ) : (
         <span>
           Please come to use between {openingHour}:00 and {closingHour}:00
