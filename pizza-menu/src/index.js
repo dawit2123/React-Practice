@@ -67,37 +67,32 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our menu</h2>
-      <Pizza
-        name="Pizza Spinaci"
-        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
-        photoName="pizza/spinaci.jpg"
-        price={10}
-      />
-      <Pizza
-        name="Pizza Prosciutto"
-        ingredients="Tomato, mozarella, ham, aragula, and burrata cheese"
-        price={18}
-        photoName="pizza/prosciutto.jpg"
-      />
+      <ul className="pizzas">
+        {pizzaData.map((pizza) => (
+          <Pizza pizzaObj={pizza} key={pizza.name} />
+        ))}
+      </ul>
     </main>
   );
 }
 function Pizza(Props) {
+  console.log(Props.pizzaObj.photoName);
   return (
-    <div className="pizza">
-      <img src={Props.photoName} alt={Props.name}></img>
+    <li className="pizza">
+      <img src={Props.pizzaObj.photoName} alt={Props.pizzaObj.name}></img>
       <div>
-        <h3>{Props.name}</h3>
-        <p>{Props.ingredients}</p>
+        <h3>{Props.pizzaObj.name}</h3>
+        <p>{Props.pizzaObj.ingredients}</p>
+        <span>{Props.pizzaObj.price}</span>
       </div>
-    </div>
+    </li>
   );
 }
 function Footer() {
   return (
     <footer className="footer">
-      {new Date().toLocaleDateString().split("/")[2]}
-      <span> Made By Dawit Zewdu. </span>
+      {/* {new Date().toLocaleDateString().split("/")[2]} */}
+      <span> We ar open. Come to use or order online.</span>
     </footer>
   );
 }
