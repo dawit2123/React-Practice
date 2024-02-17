@@ -1,0 +1,22 @@
+.container {
+  text-align: center;
+  margin: 80px;
+  font-size: 30px;
+}
+.incStep {
+  font-size: 30px;
+  margin: 12px;
+}
+
+.decStep {
+  font-size: 30px;
+  margin: 12px;
+}
+.incCount {
+  font-size: 30px;
+  margin: 12px;
+}
+.decCount {
+  font-size: 30px;
+  margin: 12px;
+}
