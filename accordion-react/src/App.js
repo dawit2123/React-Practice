@@ -24,19 +24,41 @@ const items = [
     id: Date.now() + 2,
   },
 ];
-{
-  /* <h2 className="faq">Frequently Asked Questions FAQ</h2>; */
-}
+
 function Accordion() {
-  return items.map((item, index) => (
-    <AccordionItem item={item} index={index} key={item.id} />
-  ));
+  const [globalIsOpened, globalSetIsOpened] = useState(null);
+  const [validateOpened, setValidateOpened] = useState(false);
+
+  return (
+    <>
+      <h2 className="faq">Frequently Asked Questions FAQ</h2>;
+      {items.map((item, index) => (
+        <AccordionItem
+          item={item}
+          index={index}
+          key={item.id}
+          globalIsOpened={globalIsOpened}
+          validateOpened={validateOpened}
+          globalSetIsOpened={globalSetIsOpened}
+          setValidateOpened={setValidateOpened}
+        />
+      ))}
+      ;
+    </>
+  );
 }
-function AccordionItem({ item, index }) {
-  const [isOpened, setIsOpened] = useState(false);
+function AccordionItem({
+  item,
+  index,
+  globalIsOpened,
+  globalSetIsOpened,
+  validateOpened,
+  setValidateOpened,
+}) {
+  const isOpened = globalIsOpened === index && validateOpened;
   function handleIsOpened(item) {
-    console.log("high");
-    setIsOpened(!isOpened);
+    globalSetIsOpened(index);
+    setValidateOpened(!validateOpened);
   }
   return (
     <div className="container">
@@ -48,7 +70,6 @@ function AccordionItem({ item, index }) {
           <h2 className="child-header">{item.name}</h2>
           <button className="button">{isOpened === true ? "-" : "+"}</button>
         </div>
-
         <p className="container-paragraph">
           {isOpened === true ? item.description : ""}
         </p>
