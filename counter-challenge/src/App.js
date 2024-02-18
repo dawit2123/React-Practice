@@ -6,6 +6,7 @@ export default function App() {
 function Counter() {
   const [step, setStep] = useState(1);
   const [count, setCount] = useState(0);
+  const [range, setRange] = useState(1);
   const handleDecreaseStep = () => {
     if (step > 1) setStep((step) => step - 1);
   };
@@ -21,9 +22,14 @@ function Counter() {
     message = `${dateCount} days from today is ${estimatedDate.toDateString()}`;
   else if (dateCount < 0)
     message = `${dateCount * -1} days ago was ${estimatedDate.toDateString()}`;
+  // function handleRange(e) {
+  //   setRange(e.target.value);
+  // }
   return (
     <div className="container">
       <div className="step">
+        {/* <input type="range" min={0} max={10} onChange={(e) => handleRange(e)} />
+        {range} */}
         <button className="decStep" onClick={handleDecreaseStep}>
           -
         </button>
