@@ -5,6 +5,9 @@ const messages = [
   "Invest your new income 🤑",
 ];
 export default function App() {
+  return <Step />;
+}
+function Step() {
   const [step, setStep] = useState(1);
   const [isOpened, setIsOpened] = useState(true);
   const handlePrevious = () => {
@@ -16,7 +19,7 @@ export default function App() {
 
   return (
     <>
-      <button className="close" onClick={() => setIsOpened(!isOpened)}>
+      <button className="close" onClick={() => setIsOpened((open) => !open)}>
         &times;
       </button>
       {isOpened && (
@@ -30,21 +33,27 @@ export default function App() {
             Step {step}: {messages[step - 1]}
           </div>
           <div className="buttons">
-            <button
-              style={{ backgroundColor: "#7950f2", color: "#fff" }}
-              onClick={handlePrevious}
-            >
-              Previous
-            </button>
-            <button
-              style={{ backgroundColor: "#7950f2", color: "#fff" }}
-              onClick={handleNext}
-            >
-              Next
-            </button>
+            <Button bgColor="#7950f2" color="#fff" onClick={handlePrevious}>
+              <span>👈🏿</span>Previous
+            </Button>
+            <Button bgColor="#7950f2" color="#fff" onClick={handleNext}>
+              <span>👉🏿</span>Next
+            </Button>
           </div>
         </div>
       )}
     </>
+  );
+}
+{
+}
+function Button({ bgColor, color, onClick, children }) {
+  return (
+    <button
+      style={{ backgroundColor: bgColor, color: color }}
+      onClick={onClick}
+    >
+      {children}
+    </button>
   );
 }
