@@ -1,0 +1,42 @@
+.container {
+  width: 600px;
+  margin: 100px auto;
+}
+.parent-header {
+  display: flex;
+  /* gap: 30px; */
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.number {
+  font-size: 30px;
+  color: grey;
+}
+.button {
+  font-size: 35px;
+  background-color: transparent;
+  border: none;
+}
+.container-item {
+  padding: 10px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.315);
+  margin-bottom: 10px;
+}
+.faq {
+  text-align: center;
+  text-decoration: underline;
+}
+.active {
+  color: rgb(28, 211, 4);
+  border-top: 4px solid rgb(28, 211, 4);
+}
+.active .number {
+  color: rgb(28, 211, 4);
+}
+.active .button {
+  color: rgb(28, 211, 4);
+}
+.container-paragraph {
+  color: black;
+}
