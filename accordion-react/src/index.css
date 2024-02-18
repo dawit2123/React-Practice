@@ -17,6 +17,7 @@
   font-size: 35px;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 .container-item {
   padding: 10px;
@@ -39,4 +40,9 @@
 }
 .container-paragraph {
   color: black;
+}
+p {
+  padding: 0px;
+  margin: 0px;
+  font-size: 18px;
 }
