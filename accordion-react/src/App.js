@@ -6,19 +6,19 @@ export default function App() {
 }
 const items = [
   {
-    name: "What is React",
+    name: "What is React ?",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam sunt explicabo fuga quas expedita totam! Quia distinctio enim cum voluptas mollitia optio, eius ipsam consequatur consectetur dolore, necessitatibus, eligendi adipisci.",
     id: Date.now(),
   },
   {
-    name: "What is the best programming language to learn",
+    name: "What is the best programming language to learn ?",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam sunt explicabo fuga quas expedita totam! Quia distinctio enim cum voluptas mollitia optio, eius ipsam consequatur consectetur dolore, necessitatibus, eligendi adipisci.",
     id: Date.now() + 1,
   },
   {
-    name: "How to love problem and get more problems",
+    name: "How to love problem and get more problems ?",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam sunt explicabo fuga quas expedita totam! Quia distinctio enim cum voluptas mollitia optio, eius ipsam consequatur consectetur dolore, necessitatibus, eligendi adipisci.",
     id: Date.now() + 2,
@@ -50,15 +50,21 @@ function Accordion() {
 function AccordionItem({
   item,
   index,
-  globalIsOpened,
-  globalSetIsOpened,
   validateOpened,
   setValidateOpened,
+  globalIsOpened,
+  globalSetIsOpened,
 }) {
   const isOpened = globalIsOpened === index && validateOpened;
+
   function handleIsOpened(item) {
+    let insertedStatus = validateOpened;
+    insertedStatus =
+      globalIsOpened === index || globalIsOpened === null
+        ? !insertedStatus
+        : insertedStatus;
+    setValidateOpened(insertedStatus);
     globalSetIsOpened(index);
-    setValidateOpened(!validateOpened);
   }
   return (
     <div className="container">
