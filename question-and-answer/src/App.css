@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+.btn {
+  padding: 10px;
+  margin: 5px;
+  background-image: linear-gradient(to bottom right, #06608385, #11005e);
+  border-radius: 10px;
+  border-style: none;
+  cursor: pointer;
+}
+html {
+  background-image: linear-gradient(to bottom right, #52e7a9, #041b69);
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+}
+div {
+  margin-top: 90px;
+}
