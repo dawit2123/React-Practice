@@ -19,7 +19,7 @@ function QuestionAndAnswers() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const handleAnswer = () => {
-    setShowAnswer(!showAnswer);
+    setShowAnswer((showAnswer) => !showAnswer);
   };
   return (
     <div>
