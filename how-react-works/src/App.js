@@ -78,9 +78,7 @@ function TabContent({ item }) {
   }
   let setIntervalVariable;
   function handleUndoIn2Sec() {
-    if (numOfSecondsRemaining > 0) {
-      setIntervalVariable = setInterval(decreaseTime, 1000);
-    }
+    setIntervalVariable = setInterval(decreaseTime, 1000);
   }
   function decreaseTime() {
     setNumOfSecondsRemaining((numOfSecondsRemaining) => {
