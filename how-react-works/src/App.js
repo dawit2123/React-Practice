@@ -70,6 +70,7 @@ function TabContent({ item }) {
   function handleUndo() {
     setShowDetails(true);
     setLikes(0);
+    setNumOfSecondsRemaining(2);
   }
   function handleInc3Times() {
     setLikes((likes) => likes + 1);
