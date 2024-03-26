@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./App.css";
 export default function App() {
   return (
     <div className="App">
@@ -24,11 +25,19 @@ function QuestionAndAnswers() {
     <div>
       <h1>{qNA[currentQuestion].question}</h1>
       <h2>{showAnswer ? qNA.at(currentQuestion).answer : ""}</h2>
-      <button onClick={handleAnswer}>
+      <button className="btn" onClick={handleAnswer}>
         {showAnswer ? "Hide answer" : "Show Answer"}
       </button>
-      <br />
-      <button onClick={() => setCurrentQuestion(currentQuestion + 1)}>
+      <button
+        className="btn"
+        onClick={() =>
+          setCurrentQuestion(
+            currentQuestion < qNA.length - 1
+              ? currentQuestion + 1
+              : currentQuestion
+          )
+        }
+      >
         Change question
       </button>
     </div>
