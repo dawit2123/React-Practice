@@ -62,6 +62,7 @@ function Tab({ num, activeTab, onClick }) {
 function TabContent({ item }) {
   const [showDetails, setShowDetails] = useState(true);
   const [likes, setLikes] = useState(0);
+  const [numOfSecondsRemaining, setNumOfSecondsRemaining] = useState(5);
 
   function handleInc() {
     setLikes(likes + 1);
@@ -74,6 +75,24 @@ function TabContent({ item }) {
     setLikes((likes) => likes + 1);
     setLikes((likes) => likes + 1);
     setLikes((likes) => likes + 1);
+  }
+  let setIntervalVariable;
+  let secondsRemaing = numOfSecondsRemaining;
+  function handleUndoIn2Sec() {
+    if (secondsRemaing > 0) {
+      setIntervalVariable = setInterval(decreaseTime, 1000);
+    }
+  }
+  function decreaseTime() {
+    setNumOfSecondsRemaining((numOfSecondsRemaining) => {
+      if (numOfSecondsRemaining === 0) {
+        handleUndo();
+        clearInterval(setIntervalVariable);
+        return numOfSecondsRemaining;
+      } else {
+        return numOfSecondsRemaining - 1;
+      }
+    });
   }
   return (
     <div className="tab-content">
@@ -94,7 +113,9 @@ function TabContent({ item }) {
 
       <div className="tab-undo">
         <button onClick={handleUndo}>Undo</button>
-        <button>Undo in 2s</button>
+        <button onClick={handleUndoIn2Sec}>
+          Undo in {numOfSecondsRemaining}s
+        </button>
       </div>
     </div>
   );
