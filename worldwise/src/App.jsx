@@ -1,4 +1,4 @@
 function App(){
-  return <div>WorldWise</div>
+  return <div><h1>WorldWise</h1></div>
 }
 export default App;
